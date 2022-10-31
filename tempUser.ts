@@ -22,6 +22,10 @@ const tempUserModel = (sequelize: Sequelize, DataType: any) => {
         type: DataType.STRING,
         allowNull: false,
       },
+      purpose: {
+        type: DataType.STRING,
+        allowNull: false,
+      },
       is_verified: {
         type: DataType.BOOLEAN,
       },
