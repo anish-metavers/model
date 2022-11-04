@@ -46,7 +46,7 @@ const DATABASE = async () => {
       UserLog: UserLog(sequelize, DataTypes),
     };
 
-    await sequelize.sync({ force: true });
+    // await sequelize.sync({ force: true });
 
     global.DB = db;
   } catch (error) {
