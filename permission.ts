@@ -1,35 +1,35 @@
-import { Model, Sequelize } from 'sequelize';
+import { Model, Sequelize, DataTypes } from 'sequelize';
 
 export class Permission extends Model {}
-const model = (sequelize: Sequelize, DataType: any) => {
+const model = (sequelize: Sequelize) => {
   Permission.init(
     {
       // Model attributes are defined here
       id: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
       },
       name: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       path: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       method: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       createdAt: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         field: 'created_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         field: 'updated_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },

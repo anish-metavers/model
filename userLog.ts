@@ -1,4 +1,4 @@
-import { Model, Sequelize } from 'sequelize';
+import { Model, Sequelize, DataTypes } from 'sequelize';
 
 class UserLog extends Model {
   static associate(models: any) {
@@ -9,40 +9,40 @@ class UserLog extends Model {
     });
   }
 }
-const model = (sequelize: Sequelize, DataType: any) => {
+const model = (sequelize: Sequelize) => {
   UserLog.init(
     {
       // Model attributes are defined here
       id: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
       },
       user_id: {
-        type: DataType.BIGINT.UNSIGNED,
+        type: DataTypes.BIGINT.UNSIGNED,
         allowNull: false,
       },
       activity: {
-        type: DataType.ENUM('login', 'change_password'),
+        type: DataTypes.ENUM('login', 'change_password'),
         allowNull: false,
       },
       ip_address: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       status: {
-        type: DataType.ENUM('0', '1'),
+        type: DataTypes.ENUM('0', '1'),
         allowNull: false,
         defaultValue: '1',
       },
       createdAt: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         field: 'created_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         field: 'updated_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },

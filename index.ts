@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes } from 'sequelize';
+import { Sequelize } from 'sequelize';
 import User from './users';
 import Role from './roles';
 import UserRole from './userRoles';
@@ -9,6 +9,7 @@ import TempUser from './tempUser';
 import Wallet from './wallets';
 import Bets from './bets';
 import UserLog from './userLog';
+import Config from './config';
 
 const DATABASE = async () => {
   const sequelize = new Sequelize(
@@ -34,16 +35,17 @@ const DATABASE = async () => {
     );
     const db = {
       sequelize: sequelize,
-      User: User(sequelize, DataTypes),
-      Role: Role(sequelize, DataTypes),
-      UserRole: UserRole(sequelize, DataTypes),
-      Permission: Permission(sequelize, DataTypes),
-      RolePermission: RolePermission(sequelize, DataTypes),
-      TempUser: TempUser(sequelize, DataTypes),
-      SportBet: SportBet(sequelize, DataTypes),
-      Wallet: Wallet(sequelize, DataTypes),
-      Bets: Bets(sequelize, DataTypes),
-      UserLog: UserLog(sequelize, DataTypes),
+      User: User(sequelize),
+      Role: Role(sequelize),
+      UserRole: UserRole(sequelize),
+      Permission: Permission(sequelize),
+      RolePermission: RolePermission(sequelize),
+      TempUser: TempUser(sequelize),
+      SportBet: SportBet(sequelize),
+      Wallet: Wallet(sequelize),
+      Bets: Bets(sequelize),
+      UserLog: UserLog(sequelize),
+      Config: Config(sequelize),
     };
 
     // await sequelize.sync({ force: true });
