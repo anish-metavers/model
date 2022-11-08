@@ -1,33 +1,33 @@
-import { Model, Sequelize } from 'sequelize';
+import { Model, Sequelize, DataTypes } from 'sequelize';
 
 class UserRole extends Model {}
 
-const model = (sequelize: Sequelize, DataType: any) => {
+const model = (sequelize: Sequelize) => {
   UserRole.init(
     {
       // Model attributes are defined here
       id: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
       user_id: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       role_id: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         defaultValue: 2,
         allowNull: false,
       },
       createdAt: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         field: 'created_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         field: 'updated_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },

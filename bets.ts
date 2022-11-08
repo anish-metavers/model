@@ -1,65 +1,65 @@
-import { Model, Sequelize } from 'sequelize';
+import { Model, Sequelize, DataTypes } from 'sequelize';
 
 class Bet extends Model {}
 
-const model = (sequelize: Sequelize, DataType: any) => {
-    Bet.init(
-        {
-            // Model attributes are defined here
-            id: {
-                type: DataType.INTEGER,
-                autoIncrement: true,
-                allowNull: false,
-                primaryKey: true,
-            },
-            game_id: {
-                type: DataType.INTEGER,
-                allowNull: false,
-            },
-            user_id: {
-                type: DataType.INTEGER,
-                allowNull: false,
-            },
-            odd_id: {
-                type: DataType.INTEGER,
-                allowNull: true,
-            },
-            amount: {
-                type: DataType.FLOAT(10, 2),
-                allowNull: false,
-            },
-            bet_info: {
-                type: DataType.JSON,
-                allowNull: true,
-            },
-            bet_data: {
-                type: DataType.JSON,
-                allowNull: true,
-            },
-            bet_result: {
-                type: DataType.STRING,
-                allowNull: true,
-                defaultValue: null,
-            },
-            createdAt: {
-                type: DataType.DATE,
-                field: 'created_at',
-                defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-            },
-            updatedAt: {
-                type: DataType.DATE,
-                field: 'updated_at',
-                defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-            },
-        },
-        {
-            timestamps: true,
-            sequelize,
-            modelName: 'Bet',
-            tableName: 'bets',
-        },
-    );
-    return Bet;
+const model = (sequelize: Sequelize) => {
+  Bet.init(
+    {
+      // Model attributes are defined here
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+      },
+      game_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      odd_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      amount: {
+        type: DataTypes.FLOAT(10, 2),
+        allowNull: false,
+      },
+      bet_info: {
+        type: DataTypes.JSON,
+        allowNull: true,
+      },
+      bet_data: {
+        type: DataTypes.JSON,
+        allowNull: true,
+      },
+      bet_result: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: null,
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        field: 'created_at',
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        field: 'updated_at',
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+    },
+    {
+      timestamps: true,
+      sequelize,
+      modelName: 'Bet',
+      tableName: 'bets',
+    },
+  );
+  return Bet;
 };
 
 export default model;
