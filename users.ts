@@ -1,99 +1,99 @@
-import { Model, Sequelize } from 'sequelize';
+import { Model, Sequelize, DataTypes } from 'sequelize';
 
 export class User extends Model {}
 
-const model = (sequelize: Sequelize, DataType: any) => {
+const model = (sequelize: Sequelize) => {
   User.init(
     {
       // Model attributes are defined here
       id: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
       first_name: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       last_name: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       dob: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
       },
       address: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       user_name: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       email: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       account_verified: {
-        type: DataType.BOOLEAN,
+        type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
       password: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       mobile_number: {
-        type: DataType.BIGINT,
+        type: DataTypes.BIGINT,
       },
       avatar: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         defaultValue: '/assets/defaultImage.png',
       },
       area_code: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       zip_code: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       city: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       country: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       state: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       suspension_reason: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       status: {
-        type: DataType.ENUM('ACTIVE', 'DELETED', 'SUSPENDED'),
+        type: DataTypes.ENUM('ACTIVE', 'DELETED', 'SUSPENDED'),
         defaultValue: 'ACTIVE',
       },
       show_online_status: {
-        type: DataType.BOOLEAN,
+        type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
       show_user_name: {
-        type: DataType.BOOLEAN,
+        type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
       login_source: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       unique_uid: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       uid: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       preferred_language: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         defaultValue: 'en',
       },
       createdAt: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         field: 'created_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         field: 'updated_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },

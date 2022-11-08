@@ -1,54 +1,54 @@
-import { Model, Sequelize } from 'sequelize';
+import { Model, Sequelize, DataTypes } from 'sequelize';
 
 export class SportBet extends Model {}
 
-const model = (sequelize: Sequelize, DataType: any) => {
+const model = (sequelize: Sequelize) => {
   SportBet.init(
     {
       // Model attributes are defined here
       id: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
       },
       user_id: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       market_id: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       odd_id: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       amount: {
-        type: DataType.DOUBLE,
+        type: DataTypes.DOUBLE,
       },
       odd_info: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
       },
       is_available_balance: {
-        type: DataType.FLOAT,
+        type: DataTypes.FLOAT,
       },
       result: {
-        type: DataType.BOOLEAN,
+        type: DataTypes.BOOLEAN,
       },
       open: {
-        type: DataType.BOOLEAN,
+        type: DataTypes.BOOLEAN,
       },
       potential_return: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
       },
       createdAt: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         field: 'created_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         field: 'updated_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },

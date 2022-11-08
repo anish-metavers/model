@@ -1,41 +1,41 @@
-import { Model, Sequelize } from 'sequelize';
+import { Model, Sequelize, DataTypes } from 'sequelize';
 
 export class TempUser extends Model {}
 
-const tempUserModel = (sequelize: Sequelize, DataType: any) => {
+const tempUserModel = (sequelize: Sequelize) => {
   TempUser.init(
     {
       // Model attributes are defined here
       id: {
-        type: DataType.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
       mobile_number: {
-        type: DataType.BIGINT,
+        type: DataTypes.BIGINT,
       },
       email: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
       },
       otp: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       purpose: {
-        type: DataType.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       is_verified: {
-        type: DataType.BOOLEAN,
+        type: DataTypes.BOOLEAN,
       },
       createdAt: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         field: 'created_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
-        type: DataType.DATE,
+        type: DataTypes.DATE,
         field: 'updated_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },
