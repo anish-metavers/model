@@ -9,6 +9,7 @@ import TempUser from './tempUser';
 import Wallet from './wallets';
 import Bets from './bets';
 import UserLog from './userLog';
+import ThirdPartyBet from './thirdPartyBet';
 import Config from './config';
 
 const DATABASE = async () => {
@@ -30,9 +31,7 @@ const DATABASE = async () => {
 
   try {
     await sequelize.authenticate();
-    console.log(
-      'Database connection established successfully!!........................................',
-    );
+    console.log('---- !!MySQL DB Connected Successfully!! ----');
     const db = {
       sequelize: sequelize,
       User: User(sequelize),
@@ -46,13 +45,21 @@ const DATABASE = async () => {
       Bets: Bets(sequelize),
       UserLog: UserLog(sequelize),
       Config: Config(sequelize),
+      ThirdPartyBet: ThirdPartyBet(sequelize),
     };
 
-    // await sequelize.sync({ force: true });
+    // Setting the association of model
+    Object.keys(db).forEach((modelName) => {
+      if (db[modelName].associate) {
+        db[modelName].associate(db);
+      }
+    });
+
+    // await sequelize.sync({ alter: true });
 
     global.DB = db;
   } catch (error) {
-    console.error('Unable to connect to database!!!!!!!!!!!!!!!!!!!!!!', error);
+    console.error('## Unable to connect to database ##', error);
   }
 };
 

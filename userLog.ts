@@ -20,7 +20,7 @@ const model = (sequelize: Sequelize) => {
         primaryKey: true,
       },
       user_id: {
-        type: DataTypes.BIGINT.UNSIGNED,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       activity: {

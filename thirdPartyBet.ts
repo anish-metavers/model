@@ -1,9 +1,11 @@
 import { Model, Sequelize, DataTypes } from 'sequelize';
 
-class Bet extends Model {}
+class ThirdPartyBet extends Model {
+  static associate(models: any) {}
+}
 
 const model = (sequelize: Sequelize) => {
-  Bet.init(
+  ThirdPartyBet.init(
     {
       // Model attributes are defined here
       id: {
@@ -12,7 +14,15 @@ const model = (sequelize: Sequelize) => {
         allowNull: false,
         primaryKey: true,
       },
-      game_id: {
+      client_bet_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      client_game_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      client_game_round_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -53,13 +63,20 @@ const model = (sequelize: Sequelize) => {
       },
     },
     {
+      indexes: [
+        {
+          name: 'unique_client_ids',
+          unique: true,
+          fields: ['client_bet_id', 'client_game_id', 'client_game_round_id'],
+        },
+      ],
       timestamps: true,
       sequelize,
-      modelName: 'Bet',
-      tableName: 'bets',
+      modelName: 'ThirdPartyBet',
+      tableName: 'third_party_bets',
     },
   );
-  return Bet;
+  return ThirdPartyBet;
 };
 
 export default model;
