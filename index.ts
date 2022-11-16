@@ -11,6 +11,7 @@ import Bets from './bets';
 import UserLog from './userLog';
 import ThirdPartyBet from './thirdPartyBet';
 import Config from './config';
+import Transaction from './transaction';
 
 const DATABASE = async () => {
   const sequelize = new Sequelize(
@@ -46,6 +47,7 @@ const DATABASE = async () => {
       UserLog: UserLog(sequelize),
       Config: Config(sequelize),
       ThirdPartyBet: ThirdPartyBet(sequelize),
+      Transaction: Transaction(sequelize),
     };
 
     // Setting the association of model
