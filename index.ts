@@ -12,6 +12,7 @@ import UserLog from './userLog';
 import ThirdPartyBet from './thirdPartyBet';
 import Config from './config';
 import Transaction from './transaction';
+import Currency from './currency';
 
 const DATABASE = async () => {
   const sequelize = new Sequelize(
@@ -48,6 +49,7 @@ const DATABASE = async () => {
       Config: Config(sequelize),
       ThirdPartyBet: ThirdPartyBet(sequelize),
       Transaction: Transaction(sequelize),
+      Currency: Currency(sequelize),
     };
 
     // Setting the association of model
