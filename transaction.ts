@@ -1,6 +1,14 @@
 import { Model, Sequelize, DataTypes } from 'sequelize';
 
-export class Transaction extends Model {}
+export class Transaction extends Model {
+  static associate(models: any) {
+    this.belongsTo(models.Currency, {
+      as: 'currency_data',
+      foreignKey: 'currency_id',
+      targetKey: 'id',
+    });
+  }
+}
 
 const tempUserModel = (sequelize: Sequelize) => {
   Transaction.init(
@@ -20,6 +28,14 @@ const tempUserModel = (sequelize: Sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      currency_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      type: {
+        type: DataTypes.ENUM('DEPOSIT', 'WITHDRAW'),
+        allowNull: false,
+      },
       amount: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -34,7 +50,7 @@ const tempUserModel = (sequelize: Sequelize) => {
         type: DataTypes.STRING,
       },
       status: {
-        type: DataTypes.ENUM('OPEN', 'VERIFIED', 'COMPLETED', 'EXPIRED'),
+        type: DataTypes.ENUM('OPEN', 'PROCESSING', 'FAILED', 'COMPLETED'),
         defaultValue: 'OPEN',
       },
       utr: {
@@ -43,12 +59,12 @@ const tempUserModel = (sequelize: Sequelize) => {
       verify_time_stamp: {
         type: DataTypes.DATE,
       },
-      created_at: {
+      createdAt: {
         type: DataTypes.DATE,
         field: 'created_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },
-      updated_at: {
+      updatedAt: {
         type: DataTypes.DATE,
         field: 'updated_at',
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
